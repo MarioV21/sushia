@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Android AR Launch</title>
+  <script>
+    const isAndroid = /android/i.test(navigator.userAgent);
+    if (isAndroid) {
+      // Redirect to AR Scene Viewer via intent
+      const glbUrl = 'https://mariov21.github.io/sushia/Sushi.glb';
+      const intentUrl = `intent://arvr.google.com/scene-viewer/1.0?file=${glbUrl}&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=${glbUrl};end;`;
+      window.location.href = intentUrl;
+    }
+  </script>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h2>If you're not redirected, your device may not support AR.</h2>
+  <p>Or <a href="https://mariov21.github.io/sushia/Sushi.glb">click here</a> to open the 3D model manually.</p>
+</body>
+</html>
