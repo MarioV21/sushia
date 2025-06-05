@@ -24,22 +24,30 @@
 
     model-viewer {
       width: 100%;
-      max-width: 700px;
-      height: 600px;
+      max-width: 600px;
+      height: 500px;
       background: #fff;
       border-radius: 16px;
+      position: relative;
     }
 
-    model-viewer::part(ar-button) {
-      width: 100px;
-      height: 100px;
+    /* Custom AR button */
+    .custom-ar-button {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      border: none;
+      border-radius: 50%;
+      background-color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      background-image: url('https://modelviewer.dev/shared-assets/icons/view-in-ar-new.svg');
+      background-repeat: no-repeat;
+      background-position: center;
       background-size: 60% 60%;
-      bottom: 16px;
-      right: 16px;
-    }
-
-    model-viewer::part(ar-button):hover {
-      background-color: #ddd;
+      cursor: pointer;
+      z-index: 10;
     }
   </style>
 </head>
@@ -56,6 +64,8 @@
     camera-controls
     shadow-intensity="1"
     exposure="1">
+
+    <button slot="ar-button" class="custom-ar-button"></button>
   </model-viewer>
 
 </body>
