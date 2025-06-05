@@ -1,28 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Android AR Launch</title>
-  <script>
-    const isAndroid = /android/i.test(navigator.userAgent);
-    if (isAndroid) {
-      // Redirect to AR Scene Viewer via intent
-      const glbUrl = 'https://mariov21.github.io/sushia/Sushi.glb';
-      const intentUrl = `intent://arvr.google.com/scene-viewer/1.0?file=${glbUrl}&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=${glbUrl};end;`;
-      window.location.href = intentUrl;
-    }
-  </script>
+  <meta charset="UTF-8">
+  <title>AR Viewer</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
     body {
-      font-family: sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
       text-align: center;
-      padding: 2rem;
+    }
+
+    model-viewer {
+      width: 100%;
+      max-width: 600px;
+      height: 500px;
+      background: #fff;
+      border-radius: 16px;
     }
   </style>
 </head>
 <body>
-  <h2>If you're not redirected, your device may not support AR.</h2>
-  <p>Or <a href="https://mariov21.github.io/sushia/Sushi.glb">click here</a> to open the 3D model manually.</p>
+  <h1>Tap to View in AR</h1>
+
+  <model-viewer
+    src="Sushi.glb"
+    ios-src="Sushi.usdz"
+    alt="3D Sushi Model"
+    ar
+    ar-modes="scene-viewer quick-look webxr"
+    auto-rotate
+    camera-controls
+    shadow-intensity="1"
+    exposure="1">
+  </model-viewer>
+
 </body>
 </html>
